@@ -1,151 +1,281 @@
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
-	<head>
-		<!-- NAME: 1 COLUMN -->
-		<!--[if gte mso 15]>
-		<xml>
-				<o:OfficeDocumentSettings>
-				<o:AllowPNG/>
-				<o:PixelsPerInch>96</o:PixelsPerInch>
-				</o:OfficeDocumentSettings>
-		</xml>
-		<![endif]-->
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-		<meta name="description" content="Stamp Interest and Stamp Fee Calculator">   
-		<meta name="keywords" content="Stamp Interest Calculator, Stamp Fee Calculator">
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
-		<meta http-equiv="Cache-Control" content="no-cache">
-		<meta http-equiv="Pragma" content="no-cache"> 
-		<meta itemprop="name" content="Stamp Interest and Stamp Fee Calculator">
-		<meta itemprop="description" content="Stamp Interest and Stamp Fee Calculator"> 
-		<!-- og Meta Tag  -->  
-		<title>Stamp Interest and Stamp Fee Calculator</title>
-			
-    <style type="text/css">
-		 </style> 
-		<script type="text/javascript">
-			 
-		function stamcal() {
-		
-		
-			var amnt 						= 	document.getElementById("amnt").value;
-			var amntn 					= 	document.getElementById("amntn").value;
-			var penl 						= 	document.getElementById("penl").value;
-			var nibandanjodes		= 	document.getElementById("nibandanjode");
-			var nibandanjode 		= 	nibandanjodes.value; //console.log(nibandanjode);
-			
-			var regdt 					= 	document.getElementById("regdt").value;
-			amntot							=		parseInt(amnt) + parseInt(amntn);
-			
-			const currentDate 	= 	new Date(); 
-			const registdate		=		new Date(regdt);
-			//const currentmonth = currentDate.getMonth() + 1; // Months are zero-based
-			//amnt								=		parseInt(amnt) + parseInt(amntn);
-			const regdate		 		= 	registdate.getFullYear();
-			const currentmonth 	= 	currentDate.getFullYear();
-			const month1 				= 	registdate.getMonth();
-			const month2 				= 	currentDate.getMonth();
-			var cantdate				=	 	(currentmonth - regdate) * 12 + (month2 - month1) + 1;
-			if(nibandanjode==1){
-				var byaz						=	 	(cantdate) * 0.015 * amntot;
-				
-			}else{
-				var byaz						=	 	(cantdate) * 0.015 * amnt;
-			}
-			 
-			
-			var totamount				=	 	parseInt(byaz) + parseInt(amnt) + parseInt(amntn) + parseInt(penl);
- 
-			document.getElementById("kulkami").innerHTML = amnt;
-			document.getElementById("totbyazmonth").innerHTML = (cantdate) * 1.5;
-			document.getElementById("cantdate").innerHTML = cantdate + '*1.5';
-			document.getElementById("byaz").innerHTML = byaz;
-			document.getElementById("canto").innerHTML = totamount;
-			
-			
-		}
-		</script>
-		 
-	</head>
-	<body>
-		<!--*|IF:MC_PREVIEW_TEXT|*-->
-		<!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">Stamp Fee Calculator</span><!--<![endif]-->
-		<!--*|END:IF|*-->
-		<center>
-		<table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
-		<tr>
-		<td align="center" valign="top" id="bodyCell">
- 
-		<table border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer"><tbody>
-		<tr>
-		<td valign="top" id="templatePreheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
-		<tbody class="mcnTextBlockOuter">
-		<tr>
-		<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-	 
-		<table align="left" border="0" cellpadding="0" cellspacing="0" style="margin: 2rem auto;" width="80%" class="mcnTextContentContainer">
-		<tbody><tr>
+ <!DOCTYPE html>
+<!-- saved from url=(0052)https://getbootstrap.com/docs/5.3/examples/checkout/ -->
+<html lang="en" data-bs-theme="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; line-height: 150%;">
-			<h2 style="text-align:center;">स्टाम्प फीस कैलकुलेटर</h2>
-			<table style="width:100%;"><tr>
-				<td style="padding:10px;margin-right:3%;width:10%;">
-				<h3>पंजीकरण की तिथि</h3>
-				<input type="date" style="padding:10px" id="regdt" value="2025-01-01">	
-					
-				</td>
-					<td style="width:15%;"><h3>कुल माह * 1.5</h3>
-				<span style="font-size:20px;" id="cantdate">00</span>=<span  style="font-size:20px;" id="totbyazmonth"></span>
-				</td>
-				<td style="width:10%;"><h3>अंकन कमी स्टाम्प</h3>
-				<input type="input" style="padding:10px;" onkeyup="stamcal()" id="amnt" class="amnt">		
-				</td>
-				<td style="width:10%;"><h3>अंकन कमी निबन्धक</h3>
-				<input type="input" style="padding:10px;" onkeyup="stamcal()" id="amntn" class="amnt" value="0">		
-				</td> 
-				<td>
-					<h4>निबन्धन जोडे</h4>
-					<select name="nibandanjode" id="nibandanjode" onchange="stamcal()">
-						<option value="1"> हाँ </option>
-						<option value="0"> नहीं </option>
-					</select>
-				</td>
-				<td style="width:10%;"><h3>कुल कमी</h3>
-				<span style="font-size:20px;" id="kulkami">00</span>
-				
-				</td>
-				<tr>
-				<td style="width:10%;"><h3>पैनल्टी</h3>
-				<input type="input" style="padding:10px;" id="penl"  onkeyup="stamcal()" class="amnt" value="100">		
-				</td>
-			
-				<td style="width:10%;"><h3>कुल ब्याज</h3>
-				<span style="font-size:20px;" id="byaz">00</span>
-				
-				</td>
-				<td style="width:10%;"><h3>कुल धनराशि</h3>
-				<span style="font-size:20px;" id="canto">00</span>
-				
-				</td>
-				</tr>
-			</table>
-		</td>
-		</tr>
-		</tbody></table>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="description" content="Stamp Interest and Stamp Fee Calculator">   
+	<meta name="keywords" content="Stamp Interest Calculator, Stamp Fee Calculator">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Pragma" content="no-cache"> 
+	<meta itemprop="name" content="Stamp Interest and Stamp Fee Calculator">
+	<meta itemprop="description" content="Stamp Interest and Stamp Fee Calculator"> 
+	<!-- og Meta Tag  -->  
+	<title>Stamp Interest and Stamp Fee Calculator</title>
+		
+	<style type="text/css">
+	 </style> 
+	<script type="text/javascript">
 		 
-		</td>
-		</tr>
-		</tbody>
-		</table></td>
-		</tr>
-		 
-    </tbody>
-	</table></td>  
-	</tr>
-  </table>
-        </center> </body>
+	function stamcal() {
 	
-</html>
+	
+		var amnt 						= 	document.getElementById("amnt").value;
+		var amntn 					= 	document.getElementById("amntn").value;
+		var penl 						= 	document.getElementById("penl").value;
+		var nibandanjodes		= 	document.getElementById("nibandanjode");
+		var nibandanjode 		= 	nibandanjodes.value; //console.log(nibandanjode);
+		
+		var regdt 					= 	document.getElementById("regdt").value;
+		amntot							=		parseInt(amnt) + parseInt(amntn);
+		
+		const currentDate 	= 	new Date(); 
+		const registdate		=		new Date(regdt);
+		//const currentmonth = currentDate.getMonth() + 1; // Months are zero-based
+		//amnt								=		parseInt(amnt) + parseInt(amntn);
+		const regdate		 		= 	registdate.getFullYear();
+		const currentmonth 	= 	currentDate.getFullYear();
+		const month1 				= 	registdate.getMonth();
+		const month2 				= 	currentDate.getMonth();
+		var cantdate				=	 	(currentmonth - regdate) * 12 + (month2 - month1) + 1;
+		if(nibandanjode==1){
+			var byaz						=	 	(cantdate) * 0.015 * amntot;
+			
+		}else{
+			var byaz						=	 	(cantdate) * 0.015 * amnt;
+		}
+		 
+		
+		var totamount				=	 	parseInt(byaz) + parseInt(amnt) + parseInt(amntn) + parseInt(penl);
+ 
+		document.getElementById("kamis").innerHTML = amnt;
+		document.getElementById("kamin").innerHTML = amntn;
+		document.getElementById("kulamisn").innerHTML = amntot;
+		document.getElementById("totbyazmonth").innerHTML = (cantdate) * 1.5;
+		document.getElementById("cantdate").innerHTML = cantdate + ' ';
+		document.getElementById("byaz").innerHTML = byaz;
+		document.getElementById("canto").innerHTML = totamount;
+		
+		var stramt 	=	numberToHindiWords(totamount);
+		console.log(stramt);
+		document.getElementById("sabdome").value = stramt;
+	}
+	 
+	function numberToHindiWords(num) {
+    const ones = [
+        "", "एक", "दो", "तीन", "चार", "पाँच", "छह", "सात", "आठ", "नौ", "दस",
+        "ग्यारह", "बारह", "तेरह", "चौदह", "पंद्रह", "सोलह", "सत्रह", "अठारह", "उन्नीस"
+    ];
+
+    const tens = [
+        "", "", "बीस", "तीस", "चालीस", "पचास", "साठ",
+        "सत्तर", "अस्सी", "नब्बे"
+    ];
+
+    // 1 से 99 तक के सारे नंबर
+    function twoDigits(n) {
+        if (n < 20) return ones[n];
+        let t = Math.floor(n / 10);
+        let o = n % 10;
+        // irregular Hindi numbers fix (21–99)
+        const special = {
+            21: "इक्कीस", 22: "बाईस", 23: "तेइस", 24: "चौबीस", 25: "पच्चीस",
+            26: "छब्बीस", 27: "सत्ताईस", 28: "अट्ठाईस", 29: "उनतीस",
+            31: "इकतीस", 32: "बत्तीस", 33: "तैंतीस", 34: "चौंतीस", 35: "पैंतीस",
+            36: "छत्तीस", 37: "सैंतीस", 38: "अड़तीस", 39: "उनतालीस",
+            41: "इकतालीस", 42: "बयालीस", 43: "तैंतालीस", 44: "चवालीस", 45: "पैंतालीस",
+            46: "छियालीस", 47: "सैंतालीस", 48: "अड़तालीस", 49: "उनचास",
+            51: "इक्यावन", 52: "बावन", 53: "तिरेपन", 54: "चौवन", 55: "पचपन",
+            56: "छप्पन", 57: "सत्तावन", 58: "अट्ठावन", 59: "उनसाठ",
+            61: "इकसठ", 62: "बासठ", 63: "तिरेसठ", 64: "चौंसठ", 65: "पैंसठ",
+            66: "छियासठ", 67: "सड़सठ", 68: "अड़सठ", 69: "उनहत्तर",
+            71: "इकहत्तर", 72: "बहत्तर", 73: "तिहत्तर", 74: "चौहत्तर", 75: "पचहत्तर",
+            76: "छिहत्तर", 77: "सतहत्तर", 78: "अठहत्तर", 79: "उन्यासी",
+            81: "इक्यासी", 82: "बयासी", 83: "तिरासी", 84: "चौरासी", 85: "पचासी",
+            86: "छियासी", 87: "सत्तासी", 88: "अट्ठासी", 89: "नवासी",
+            91: "इक्यानवे", 92: "बानवे", 93: "तिरानवे", 94: "चौरानवे", 95: "पचानवे",
+            96: "छियानवे", 97: "सत्तानवे", 98: "अट्ठानवे", 99: "निन्यानवे"
+        };
+        if (special[n]) return special[n];
+        return tens[t] + (o ? " " + ones[o] : "");
+    }
+
+    function threeDigits(n) {
+        let h = Math.floor(n / 100);
+        let r = n % 100;
+        let str = "";
+        if (h > 0) str += (h === 1 ? "एक" : twoDigits(h)) + " सौ";
+        if (r > 0) str += (str ? " " : "") + twoDigits(r);
+        return str.trim();
+    }
+
+    if (num === 0) return "शून्य";
+
+    let result = "";
+
+    let crore = Math.floor(num / 10000000);
+    num %= 10000000;
+
+    let lakh = Math.floor(num / 100000);
+    num %= 100000;
+
+    let thousand = Math.floor(num / 1000);
+    num %= 1000;
+
+    let hundred = num;
+
+    if (crore > 0) result += threeDigits(crore) + " करोड़ ";
+    if (lakh > 0) result += threeDigits(lakh) + " लाख ";
+    if (thousand > 0) result += threeDigits(thousand) + " हज़ार ";
+    if (hundred > 0) result += threeDigits(hundred);
+
+    return result.trim();
+	}
+
+	 
+	console.log(numberToHindiWords(99999999));   // नौ करोड़ निन्यानवे लाख निन्यानवे हज़ार नौ सौ निन्यानवे
+	 
+		 
+	
+	</script>
+ 
+
+
+<style>.bd-placeholder-img{font-size:1.125rem;text-anchor:middle;-webkit-user-select:none;-moz-user-select:none;user-select:none}@media (min-width: 768px){.bd-placeholder-img-lg{font-size:3.5rem}}.b-example-divider{width:100%;height:3rem;background-color:#0000001a;border:solid rgba(0,0,0,.15);border-width:1px 0;box-shadow:inset 0 .5em 1.5em #0000001a,inset 0 .125em .5em #00000026}.b-example-vr{flex-shrink:0;width:1.5rem;height:100vh}.bi{vertical-align:-.125em;fill:currentColor}.nav-scroller{position:relative;z-index:2;height:2.75rem;overflow-y:hidden}.nav-scroller .nav{display:flex;flex-wrap:nowrap;padding-bottom:1rem;margin-top:-1px;overflow-x:auto;text-align:center;white-space:nowrap;-webkit-overflow-scrolling:touch}.btn-bd-primary{--bd-violet-bg: #712cf9;--bd-violet-rgb: 112.520718, 44.062154, 249.437846;--bs-btn-font-weight: 600;--bs-btn-color: var(--bs-white);--bs-btn-bg: var(--bd-violet-bg);--bs-btn-border-color: var(--bd-violet-bg);--bs-btn-hover-color: var(--bs-white);--bs-btn-hover-bg: #6528e0;--bs-btn-hover-border-color: #6528e0;--bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);--bs-btn-active-color: var(--bs-btn-hover-color);--bs-btn-active-bg: #5a23c8;--bs-btn-active-border-color: #5a23c8}.bd-mode-toggle{z-index:1500}.bd-mode-toggle .bi{width:1em;height:1em}.bd-mode-toggle .dropdown-menu .active .bi{display:block!important}
+</style></head> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout Form</title>
+
+  <!-- Bootstrap 5.3 CDN CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-body-tertiary">
+  <div class="container">
+    <main>
+      <div class="py-2 text-center">
+        <img class="d-block mx-auto mb-4" src="./img/logo.svg" alt="" width="150" height="120">
+        <h1 class="h2">स्टाम्प फीस कैलकुलेटर</h1>
+        <p class="lead">
+          स्टाम्प शुल्क एवं 1.5 प्रतिशत ब्याज की दरों का आकलन        </p>
+      </div>
+
+      <div class="row g-5">
+        <!-- Cart Section -->
+        <div class="col-md-5 col-lg-4 order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">आकलन विधि</span>
+							
+          </h4>
+
+          <ul class="list-group mb-3">
+					
+            <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
+              <div class="text-success">
+                <h6 class="my-0">कुल माह  </h6>
+                <small><i>पंजीकरण एवं अदायगी माह को जोडते हुए</i> </small>
+              </div>
+              <span class="text-success" id="cantdate">00</span>
+            </li>
+					 
+					
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">कमी स्टाम्प  </h6>
+              </div>
+								<span class="text-body-secondary" id="kamis">00</span>
+               
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div> <h6 class="my-0">कमी निबन्धक</h6> 
+							<small class="text-body-secondary">कुल कमी = <span id="kulamisn"></span> </small></div>
+              <span class="text-body-secondary" id="kamin">00</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">कुल ब्याज</h6>
+                <small class="text-body-secondary"><span id="totbyazmonth"></span> प्रतिशत</small>
+              </div>
+              <span class="text-body-secondary" id="byaz">00</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
+              <div>
+                <h6 class="my-0">कुल धनराशि</h6>
+                <small class="text-body-secondary">Brief description</small>
+              </div>
+              <span class="text-body-secondary fs-2"  id="canto">00</span>   
+            </li> 
+          </ul>
+ 
+        </div>
+
+        <!-- Billing Section -->
+        <div class="col-md-7 col-lg-8">
+           
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-4">
+                <label for="firstName" class="form-label">पंजीकरण की तिथि</label>
+                <input type="date" class="form-control" id="regdt" value="2025-01-01" oninput="stamcal()" required>	
+              </div>
+
+              <div class="col-sm-4">
+                <label for="lastName" class="form-label">अंकन कमी स्टाम्प</label>
+                <input type="input" class="form-control amnt" onkeyup="stamcal()" id="amnt">	
+              </div>
+
+              <div class="col-4">
+                <label for="username" class="form-label">अंकन कमी निबन्धक</label>
+                <div class="input-group has-validation">
+                  <input type="input" class="form-control amnt" onkeyup="stamcal()" id="amntn" value="0">	
+                </div>
+              </div>
+
+              <div class="col-4">
+                <label for="email" class="form-label">निबन्धन जोडे <span class="text-body-secondary">(Optional)</span></label>
+                <select class="form-control" name="nibandanjode" id="nibandanjode" onchange="stamcal()">
+									<option value="1"> हाँ </option>
+									<option value="0"> नहीं </option>
+								</select>
+              </div>
+ 
+
+              <div class="col-4">
+                <label for="address2" class="form-label">पैनल्टी </label>
+                <input type="input" class="form-control"  id="penl" onkeyup="stamcal()" class="amnt" value="100">	 
+              </div> 
+
+              <div class="col-12">
+                <label for="address2" class="form-label">शुल्क शब्दों में- </label>
+                <input type="input" class="form-control"  id="sabdome" class="amnt" value="-">	 
+              </div> 
+            </div>
+ 
+             
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-body-secondary text-center text-small">
+      <p class="mb-1">© 2017–2025 Company Name</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <!-- Bootstrap 5.3 JS Bundle (with Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ 
+</body>
+</html> 
