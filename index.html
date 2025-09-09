@@ -43,10 +43,11 @@
 		const month2 				= 	currentDate.getMonth();
 		var cantdate				=	 	(currentmonth - regdate) * 12 + (month2 - month1) + 1;
 		if(nibandanjode==1){
-			var byaz						=	 	(cantdate) * 0.015 * amntot;
-			
+			var byazdecimal					=	 	(cantdate) * 0.015 * amntot;
+			var byaz						=	Math.ceil(byazdecimal);
 		}else{
-			var byaz						=	 	(cantdate) * 0.015 * amnt;
+			var byazdecimal						=	 	(cantdate) * 0.015 * amnt;
+			var byaz						=	Math.ceil(byazdecimal);
 		}
 		 
 		
@@ -288,5 +289,6 @@
  
 </body>
 </html> 
+
 
 
