@@ -1,1 +1,1 @@
-This page is used to calculate stamp fee with interest in dispute of Indian Stamp Act 1899 cases.
+This page is used to calculate stamp fee with interest in dispute of Indian Stamp Act 1899 cases. Access the page directly from here <a href="https://psukralia.github.io/stamp-interest-calculator/" > Demo </a>
